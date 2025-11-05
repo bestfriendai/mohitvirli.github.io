@@ -12,7 +12,9 @@ import { useThemeStore } from "@stores";
 import Preloader from "./Preloader";
 import ProgressLoader from "./ProgressLoader";
 import { ScrollHint } from "./ScrollHint";
+import ScrollIndicator from "./ScrollIndicator";
 import ThemeSwitcher from "./ThemeSwitcher";
+import SocialIcons from "../hero/SocialIcons";
 // import {Perf} from "r3f-perf"
 
 const CanvasLoader = (props: { children: React.ReactNode }) => {
@@ -89,6 +91,8 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
         </Canvas>
         <ProgressLoader progress={progress} />
       </div>
+      <ScrollIndicator />
+      <SocialIcons />
       <ThemeSwitcher />
       <ScrollHint />
     </div>

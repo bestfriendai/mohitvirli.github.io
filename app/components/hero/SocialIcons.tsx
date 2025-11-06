@@ -63,22 +63,32 @@ const SocialIcons = () => {
     {
       name: 'Instagram',
       url: 'https://instagram.com/dontfollowpat',
-      icon: '/icons/instagram.svg',
+      icon: '/icons/instagram-color.svg',
+      color: '#E4405F', // Instagram brand color
+    },
+    {
+      name: 'X',
+      url: 'https://x.com/dontfollowpat',
+      icon: '/icons/x-color.svg',
+      color: '#000000', // X (Twitter) brand color
     },
     {
       name: 'TikTok',
       url: 'https://www.tiktok.com/@dontfollowpat',
-      icon: '/icons/tiktok.svg',
+      icon: '/icons/tiktok-color.svg',
+      color: '#00F2EA', // TikTok brand color
     },
     {
       name: 'YouTube',
       url: 'https://www.youtube.com/@dontfollowpat',
-      icon: '/icons/youtube.svg',
+      icon: '/icons/youtube-color.svg',
+      color: '#FF0000', // YouTube brand color
     },
     {
       name: 'Books',
       url: 'https://www.amazon.com/Secret-Life-Stop-tching-Self-Help-ebook/dp/B0F2JDZQFP',
-      icon: '/icons/book.svg',
+      icon: '/icons/book-color.svg',
+      color: '#FF9900', // Amazon brand color
     },
   ];
 
@@ -109,10 +119,20 @@ const SocialIcons = () => {
                 shadow-lg
                 group-hover:shadow-2xl
                 ${isDarkTheme
-                  ? 'bg-white/5 border-2 border-white/20 group-hover:bg-white/15 group-hover:border-white/40 group-hover:shadow-white/20'
-                  : 'bg-black/5 border-2 border-black/15 group-hover:bg-black/10 group-hover:border-black/30 group-hover:shadow-black/20'
+                  ? 'bg-white/10 border-2 border-white/30 group-hover:bg-white/20 group-hover:border-white/50'
+                  : 'bg-white/80 border-2 border-gray-200 group-hover:bg-white group-hover:border-gray-300'
                 }
               `}
+              style={{
+                boxShadow: `0 0 0 0 ${link.color}20`,
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = `0 0 20px 5px ${link.color}40`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = `0 0 0 0 ${link.color}20`;
+              }}
             >
               <Image
                 src={link.icon}

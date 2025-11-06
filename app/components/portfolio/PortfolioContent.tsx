@@ -11,11 +11,28 @@ import PortfolioFooter from "./PortfolioFooter";
 const PortfolioContent = () => {
   const data = useScroll();
   const [visible, setVisible] = useState(false);
+  const [opacity, setOpacity] = useState(0);
 
   useFrame(() => {
-    // Show portfolio after 50% scroll (after door) and before 78% (before footer links)
-    const scrollProgress = data.range(0, 1);
-    setVisible(scrollProgress > 0.5 && scrollProgress < 0.78);
+    const scrollProgress = data.offset;
+
+    // Show portfolio from 50% to 78% scroll
+    const shouldBeVisible = scrollProgress > 0.5 && scrollProgress < 0.78;
+
+    if (shouldBeVisible) {
+      setVisible(true);
+      // Fade in smoothly after 50% scroll
+      const fadeInProgress = Math.min((scrollProgress - 0.5) / 0.05, 1);
+      setOpacity(fadeInProgress);
+    } else if (scrollProgress >= 0.78) {
+      // Fade out before footer links
+      const fadeOutProgress = Math.max(1 - (scrollProgress - 0.78) / 0.02, 0);
+      setOpacity(fadeOutProgress);
+      if (fadeOutProgress === 0) setVisible(false);
+    } else {
+      setVisible(false);
+      setOpacity(0);
+    }
   });
 
   return (
@@ -23,15 +40,17 @@ const PortfolioContent = () => {
       fullscreen
       style={{
         pointerEvents: visible ? 'auto' : 'none',
-        opacity: visible ? 1 : 0,
-        transition: 'opacity 0.3s ease-in-out',
+        opacity: opacity,
+        transition: 'none', // Remove transition for smoother scroll-based animation
       }}
     >
-      <div className="fixed bottom-0 left-0 right-0 w-screen bg-background overflow-y-auto max-h-screen">
-        <Projects2D/>
-        <About/>
-        <Contact/>
-        <PortfolioFooter/>
+      <div className="fixed bottom-0 left-0 right-0 w-screen bg-gradient-to-t from-background via-background to-background/95 overflow-y-auto max-h-screen backdrop-blur-sm">
+        <div className="animate-in fade-in duration-500">
+          <Projects2D/>
+          <About/>
+          <Contact/>
+          <PortfolioFooter/>
+        </div>
       </div>
     </Html>
   );

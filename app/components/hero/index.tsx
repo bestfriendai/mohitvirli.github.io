@@ -11,6 +11,7 @@ import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
 import { Bmw } from "../models/Bmw";
 import TextWindow from "./TextWindow";
+import MobileApps from "../experience/MobileApps";
 
 const Hero = () => {
   const titleRef = useRef<THREE.Mesh>(null);
@@ -52,18 +53,47 @@ const Hero = () => {
 
   const fontProps = {
     font: "./soria-font.ttf",
-    fontSize: isMobile ? 0.7 : 1.6,
+    fontSize: isMobile ? 1 : 1.6,
+    color: "#ffffff",
+    textAlign: 'center' as const,
   };
 
-  // Responsive positioning - title higher and bigger
-  const titlePosition: [number, number, number] = [0, isMobile ? 3.5 : 5, -10];
+  const subtitleFontProps = {
+    font: "./soria-font.ttf",
+    fontSize: isMobile ? 0.4 : 0.6,
+    color: "#ffffff",
+    textAlign: 'center' as const,
+  };
+
+  // Responsive positioning - centered for mobile
+  const titlePosition: [number, number, number] = [0, isMobile ? 3 : 5, -10];
+  const subtitlePosition: [number, number, number] = [0, isMobile ? 1.5 : 3.5, -10];
 
   return (
     <>
-      <Text position={titlePosition} {...fontProps} ref={titleRef} maxWidth={isMobile ? 10 : 20}>Hi, I am Patrick Francis.</Text>
+      <Text
+        position={titlePosition}
+        {...fontProps}
+        ref={titleRef}
+        maxWidth={isMobile ? 8 : 20}
+        anchorX="center"
+        anchorY="middle"
+      >
+        Hi, I am Patrick Francis.
+      </Text>
+      <Text
+        position={subtitlePosition}
+        {...subtitleFontProps}
+        maxWidth={isMobile ? 8 : 20}
+        anchorX="center"
+        anchorY="middle"
+      >
+        Entrepreneur, App Developer, Author,{'\n'}and cool as F*CK
+      </Text>
       <StarsContainer />
       <CloudContainer/>
       <Bmw />
+      <MobileApps />
       <group position={[0, -25, 5.69]}>
         <pointLight castShadow position={[1, 1, -2.5]} intensity={60} distance={10}/>
         <WindowModel receiveShadow/>

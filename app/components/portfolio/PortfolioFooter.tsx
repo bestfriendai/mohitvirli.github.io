@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Heart, Linkedin, Mail, Twitter, Instagram, Youtube } from "lucide-react";
+import { Github, Heart, Mail, Instagram, Youtube } from "lucide-react";
 import { motion } from "motion/react";
 
 const PortfolioFooter = () => {

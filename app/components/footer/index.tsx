@@ -12,7 +12,19 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   const [hovered, setHovered] = useState(false);
   const onPointerOver = () => setHovered(true);
   const onPointerOut = () => setHovered(false);
-  const onClick = () => window.open(link.url, '_blank');
+  const onClick = () => {
+    // Special handling for APPS link - scroll to apps section instead
+    if (link.name.toLowerCase() === 'apps') {
+      // Scroll to approximately 65% of the page where apps section appears
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo({
+        top: scrollHeight * 0.65,
+        behavior: 'smooth'
+      });
+    } else {
+      window.open(link.url, '_blank');
+    }
+  };
   const onPointerMove = (e: MouseEvent) => {
     if (isMobile) return;
     const hoverDiv = document.getElementById(`footer-link-${link.name}`);

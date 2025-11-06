@@ -9,6 +9,7 @@ import * as THREE from "three";
 import CloudContainer from "../models/Cloud";
 import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
+import { Bmw } from "../models/Bmw";
 import TextWindow from "./TextWindow";
 
 const Hero = () => {
@@ -62,6 +63,7 @@ const Hero = () => {
       <Text position={titlePosition} {...fontProps} ref={titleRef} maxWidth={isMobile ? 10 : 20}>Hi, I am Patrick Francis.</Text>
       <StarsContainer />
       <CloudContainer/>
+      <Bmw />
       <group position={[0, -25, 5.69]}>
         <pointLight castShadow position={[1, 1, -2.5]} intensity={60} distance={10}/>
         <WindowModel receiveShadow/>

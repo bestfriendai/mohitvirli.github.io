@@ -5,6 +5,7 @@ import { useScrollStore } from "@/app/stores/scrollStore";
 import { useThemeStore } from "@/app/stores/themeStore";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 const SocialIcons = () => {
   const iconsRef = useRef<HTMLDivElement>(null);
@@ -88,7 +89,7 @@ const SocialIcons = () => {
       style={{ pointerEvents: 'auto' }}
     >
       <div className="flex gap-6 md:gap-8">
-        {socialLinks.map((link, index) => (
+        {socialLinks.map((link) => (
           <a
             key={link.name}
             href={link.url}
@@ -113,9 +114,11 @@ const SocialIcons = () => {
                 }
               `}
             >
-              <img
+              <Image
                 src={link.icon}
                 alt={link.name}
+                width={28}
+                height={28}
                 className="w-6 h-6 md:w-7 md:h-7 transition-all duration-300 group-hover:scale-110"
               />
             </div>

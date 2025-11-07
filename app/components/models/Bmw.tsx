@@ -59,10 +59,10 @@ export function Bmw() {
 
       groupRef.current.position.set(xPos, yPos, zPos);
 
-      // Enhanced rotation with tumbling effect
-      carRef.current.rotation.y += delta * (0.6 + scrollOffset * 2);
-      carRef.current.rotation.z += delta * (0.3 + scrollOffset * 0.8);
-      carRef.current.rotation.x = Math.sin(scrollOffset * Math.PI * 3) * 0.5 + scrollOffset * Math.PI * 0.4;
+      // BMW: Balanced rotation - smooth tumbling on all axes
+      carRef.current.rotation.x += delta * (0.6 + scrollOffset * 1.5); // Medium X flip
+      carRef.current.rotation.z += delta * (0.7 + scrollOffset * 1.8); // Medium Z barrel roll
+      carRef.current.rotation.y += delta * (0.5 + scrollOffset * 1.2); // Slow Y spin
 
       // Improved scaling with smoother transition
       const baseScale = isMobile ? 1 : 1.5;

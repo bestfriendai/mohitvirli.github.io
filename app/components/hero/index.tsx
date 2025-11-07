@@ -10,8 +10,9 @@ import CloudContainer from "../models/Cloud";
 import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
 import { Bmw } from "../models/Bmw";
+import { Porsche } from "../models/Porsche";
+import { Jeep } from "../models/Jeep";
 import TextWindow from "./TextWindow";
-import MobileApps from "../experience/MobileApps";
 
 const Hero = () => {
   const titleRef = useRef<THREE.Mesh>(null);
@@ -93,7 +94,8 @@ const Hero = () => {
       <StarsContainer />
       <CloudContainer/>
       <Bmw />
-      <MobileApps />
+      <Porsche />
+      <Jeep />
       <group position={[0, -25, 5.69]}>
         <pointLight castShadow position={[1, 1, -2.5]} intensity={60} distance={10}/>
         <WindowModel receiveShadow/>

@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { MOBILE_APPS } from "../../constants/apps";
+import { MobileApp } from "../../types/apps";
 
-const AppCard = ({ app, index }: { app: any; index: number }) => {
+const AppCard = ({ app, index }: { app: MobileApp; index: number }) => {
   const groupRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
 
@@ -89,12 +90,13 @@ const MobileApps = () => {
         card.scale.setScalar(0.3 + staggeredProgress * 0.7);
 
         // Apply opacity to all meshes and text in the card
-        card.traverse((child: any) => {
-          if (child.material) {
-            if (!child.material.transparent) {
-              child.material.transparent = true;
+        card.traverse((child: THREE.Object3D) => {
+          if ('material' in child && child.material) {
+            const material = child.material as THREE.Material;
+            if (!material.transparent) {
+              material.transparent = true;
             }
-            child.material.opacity = staggeredProgress;
+            material.opacity = staggeredProgress;
           }
         });
       });

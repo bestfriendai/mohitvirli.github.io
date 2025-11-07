@@ -15,6 +15,7 @@ export default {
       fontFamily: {
         serif: ['var(--font-soria)'],
         sans: ['var(--font-vercetti)'],
+        pixel: ['var(--font-pixelify)'],
       }
     },
   },

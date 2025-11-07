@@ -1,6 +1,7 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import localFont from 'next/font/local';
+import { Pixelify_Sans } from 'next/font/google';
 import "./globals.css";
 
 const soriaFont = localFont({
@@ -11,6 +12,11 @@ const soriaFont = localFont({
 const vercettiFont = localFont({
   src: "../public/Vercetti-Regular.woff",
   variable: "--font-vercetti",
+});
+
+const pixelifySans = Pixelify_Sans({
+  variable: "--font-pixelify",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -65,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="overscroll-y-none">
       <body
-        className={`${soriaFont.variable} ${vercettiFont.variable} font-sans antialiased`}
+        className={`${soriaFont.variable} ${vercettiFont.variable} ${pixelifySans.variable} font-sans antialiased`}
       >
         {children}
       </body>

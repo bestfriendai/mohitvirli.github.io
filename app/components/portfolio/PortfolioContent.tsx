@@ -16,13 +16,13 @@ const PortfolioContent = () => {
   useFrame(() => {
     const scrollProgress = data.offset;
 
-    // Show portfolio from 50% to 78% scroll
-    const shouldBeVisible = scrollProgress > 0.5 && scrollProgress < 0.78;
+    // Show portfolio from 70% to 78% scroll (right before footer which appears at 80%)
+    const shouldBeVisible = scrollProgress > 0.70 && scrollProgress < 0.78;
 
     if (shouldBeVisible) {
       setVisible(true);
-      // Fade in smoothly after 50% scroll
-      const fadeInProgress = Math.min((scrollProgress - 0.5) / 0.05, 1);
+      // Fade in smoothly after 70% scroll
+      const fadeInProgress = Math.min((scrollProgress - 0.70) / 0.03, 1);
       setOpacity(fadeInProgress);
     } else if (scrollProgress >= 0.78) {
       // Fade out before footer links

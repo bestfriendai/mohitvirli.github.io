@@ -83,3 +83,42 @@ body {
 .close:after {
   transform: rotate(-45deg);
 }
+
+@keyframes background-gradient {
+  0%,
+  to {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(
+      calc(100% * var(--tx-1, 1)),
+      calc(100% * var(--ty-1, 1))
+    );
+  }
+
+  40% {
+    transform: translate(
+      calc(100% * var(--tx-2, 1)),
+      calc(100% * var(--ty-2, 1))
+    );
+  }
+
+  60% {
+    transform: translate(
+      calc(100% * var(--tx-3, 1)),
+      calc(100% * var(--ty-3, 1))
+    );
+  }
+
+  80% {
+    transform: translate(
+      calc(100% * var(--tx-4, 1)),
+      calc(100% * var(--ty-4, 1))
+    );
+  }
+}
+
+.animate-background-gradient {
+  animation: background-gradient 30s ease infinite;
+}
